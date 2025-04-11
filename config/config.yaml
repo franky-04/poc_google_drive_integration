@@ -1,0 +1,29 @@
+# Configurazione per la sincronizzazione bidirezionale Google Drive
+
+# Configurazione per l'autenticazione
+auth:
+  credentials_path: 'credentials/web_credentials.json'  # Percorso al nuovo file di credenziali web
+  token_path: 'credentials/token.pickle'
+  headless: true  # Mantenuto per compatibilità
+  client_type: 'web'  # Specificare il tipo di client
+  port: 8080  # Porta da utilizzare per il server di reindirizzamento locale
+
+# Cartelle da sincronizzare
+# Formato: percorso_google_drive: percorso_locale
+sync_folders:
+  'Nome Cartella su Drive': './cartelle_locali/cartella1'
+  'Altra Cartella Drive': './cartelle_locali/cartella2'
+
+# Preferenze di sincronizzazione
+preferences:
+  # Priorità in caso di conflitto (drive o local)
+  conflict_resolution: 'drive'
+  # Abilita eliminazione dei file
+  enable_deletion: false
+  # Intervallo minimo tra controlli modifiche (in secondi)
+  min_sync_interval: 60
+  # Esclusioni di file (pattern glob)
+  exclusions:
+    - '*.tmp'
+    - '.DS_Store'
+    - 'Thumbs.db'
